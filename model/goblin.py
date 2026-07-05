@@ -1,4 +1,4 @@
-from creature import Creature
+from model.creature import Creature
 
 class Goblin(Creature):
     def __init__(self, num: int):
@@ -6,7 +6,7 @@ class Goblin(Creature):
             name=f"Goblin {num}",
             abreviation=f"G{num}",
             max_hit_points=10,
-            5,
+            dexterity=5,
             melee_accuracy=4,
             melee_damage=2,
             ranged_accuracy=2,

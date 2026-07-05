@@ -1,4 +1,4 @@
-from creature import Creature
+from model.creature import Creature
 
 class Character(Creature):
     def __init__(self, name: str, max_hit_points: int, dexterity: int, melee_accuracy: int, melee_damage: int, ranged_accuracy: int, ranged_damage: int):
