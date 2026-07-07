@@ -9,6 +9,7 @@ class TestCreature:
             "G1",
             10,
             5,
+            3,
             4,
             2,
             2,
@@ -22,6 +23,7 @@ class TestCreature:
         assert sample_creature._abr == "G1"
         assert sample_creature._hp == 10
         assert sample_creature._dex == 5
+        assert sample_creature._speed == 3
         assert sample_creature._melee_acc == 4
         assert sample_creature._melee_dmg == 2
         assert sample_creature._ranged_acc == 2

@@ -1,9 +1,10 @@
 class Creature:
-    def __init__(self, name: str, abreviation: str, max_hit_points: int, dexterity: int, melee_accuracy: int, melee_damage: int, ranged_accuracy: int, ranged_damage: int):
+    def __init__(self, name: str, abreviation: str, max_hit_points: int, dexterity: int, speed: int, melee_accuracy: int, melee_damage: int, ranged_accuracy: int, ranged_damage: int):
         self._name = name
         self._abr = abreviation
         self._hp = max_hit_points
         self._dex = dexterity
+        self._speed = speed
         self._melee_acc = melee_accuracy
         self._melee_dmg = melee_damage
         self._ranged_acc = ranged_accuracy

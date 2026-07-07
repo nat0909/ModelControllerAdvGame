@@ -7,6 +7,7 @@ class Goblin(Creature):
             abreviation=f"G{num}",
             max_hit_points=10,
             dexterity=5,
+            speed=3,
             melee_accuracy=4,
             melee_damage=2,
             ranged_accuracy=2,
