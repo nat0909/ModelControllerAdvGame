@@ -15,7 +15,7 @@ class TestCreature:
             2,
         )        
 
-    def test_creature_initialization(self):
+    def test_creature_constructor(self):
         """Test that Creature is initialized with correct attributes"""
         sample_creature = self.create_creature()
         assert sample_creature._name == "Goblin"
