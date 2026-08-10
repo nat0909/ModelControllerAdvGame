@@ -50,7 +50,7 @@ class HelperFunctions():
         
         min = -1 # placeholder
         min_index = None
-        cur_index = None
+        cur_index = 0
         for value in distances:
             if cur_index == 0 or value < min or (value == min and
             abs(start_num - possible_nums[cur_index]) < abs(start_num - possible_nums[min_index])):

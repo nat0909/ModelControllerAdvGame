@@ -1,13 +1,11 @@
 from model.goblin import Goblin
 
 class TestGoblin:
-    """Test suite for the Goblin class"""
 
     def create_goblin(self):
         return Goblin(1)        
 
     def test_goblin_constructor(self):
-        """Test that Goblin is initialized with correct attributes"""
         sample_goblin = self.create_goblin()
         assert sample_goblin._name == "Goblin 1"
         assert sample_goblin._abr == "G1"
