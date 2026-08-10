@@ -6,15 +6,15 @@ class TestCharacterCreation():
     def test_determine_stats(self):
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats("warrior")
         assert max_hp == 30
-        assert dex == 4
-        assert speed == 3
+        assert dex == 8
+        assert speed == 4
         assert melee_acc == 6
         assert melee_dmg == 4
         assert ranged_acc == 2
         assert ranged_dmg == 2
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats("ranger")
         assert max_hp == 20
-        assert dex == 2
+        assert dex == 6
         assert speed == 8
         assert melee_acc == 2
         assert melee_dmg == 2
@@ -22,7 +22,7 @@ class TestCharacterCreation():
         assert ranged_dmg == 4
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats("rogue")
         assert max_hp == 20
-        assert dex == 6
+        assert dex == 10
         assert speed == 6
         assert melee_acc == 6
         assert melee_dmg == 2

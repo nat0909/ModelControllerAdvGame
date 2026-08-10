@@ -24,8 +24,8 @@ class CharacterCreation():
     def determine_stats(c):
         # Base stats
         max_hp = 20
-        dex = 2
-        speed = 3
+        dex = 6
+        speed = 4
         melee_acc = 2
         melee_dmg = 2
         ranged_acc = 2
@@ -37,12 +37,12 @@ class CharacterCreation():
             melee_acc += 4
             melee_dmg += 2
         elif c == "ranger":
-            speed += 5
+            speed += 4
             ranged_acc += 4
             ranged_dmg += 2
         elif c == "rogue":
             dex += 4
-            speed += 3
+            speed += 2
             melee_acc += 4
             ranged_acc += 4
 
