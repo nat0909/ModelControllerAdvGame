@@ -1,9 +1,17 @@
 import copy
 
 class HelperFunctions():
-    # Returns the option in array options that best matches input
     # NOTE: currently not being used
     def interpret_input(input, options: list):
+        """Find the option that best matches the input.
+        
+        Args:
+            input: The variable checked with.
+            options: Variables to check against. 
+            
+        Returns: 
+            The variable in options that best matches input."""
+
         options_copy = copy.deepcopy(options)
 
         for i in range(len(input)):
@@ -22,8 +30,9 @@ class HelperFunctions():
             return "Invalid input"
         else:
             return "Unclear input"
+        
 
-    def closest_excluding(num: int, excluded: set, start_num: int, distance: int):
+    def closest_excluding(num: int, excluded: set, start_num: int, distance: int) -> int | None:
         """Find the value closest to num, reachable from start_num within distance and not in excluded.
 
         Args:
@@ -43,19 +52,4 @@ class HelperFunctions():
             if cur not in excluded:
                 possible_nums.append(cur)
 
-        if len(possible_nums) == 0:
-            return None
-
-        distances = map(lambda cur: abs(num - cur), possible_nums)
-        
-        min = -1 # placeholder
-        min_index = None
-        cur_index = 0
-        for value in distances:
-            if cur_index == 0 or value < min or (value == min and
-            abs(start_num - possible_nums[cur_index]) < abs(start_num - possible_nums[min_index])):
-                min = value
-                min_index = cur_index
-            cur_index += 1
-
-        return possible_nums[min_index]
+        return min(possible_nums, key=lambda cur: (abs(num - cur), abs(start_num - cur)), default= None)
