@@ -14,46 +14,35 @@ class Enemy(Creature):
             ranged_damage
         )
 
-    def move_towards(self, positions: list, index: int):
-        pos = positions[index]
-        char_pos = positions[0]
-        
-        new_pos = pos
-        next_to_char = False
-        # get as close as possible to the character, don't move more then neccessary to achieve this
-        if pos != char_pos:
-            distance = abs(pos - char_pos)
-            direction = 1 if pos < char_pos else -1
-            if distance + 1 <= self._speed:
-                next_to_char = True
-                new_pos = char_pos - direction
-            else:
-                new_pos = pos + direction * self._speed
+    def perform_turn(self, positions: dict, char_abr: str) -> tuple[int, str]:
+        pos = positions[self._abr]
+        enemy_pos = positions[char_abr]
 
-            occupied = set(positions)
-            set.remove(pos)
-            if new_pos in occupied:
-                reachable = [
-                    p for p in range(pos - self._speed, pos + self._speed + 1)
-                    if p != char_pos and p not in occupied
-                ]
+        attack_type = "none"
+        new_pos = self.move_towards(positions, char_abr)
+        if new_pos == enemy_pos + 1 or new_pos == enemy_pos - 1:
+            attack_type = "melee_attack"
+        elif abs(pos - enemy_pos) <= 20:
+            attack_type = "ranged_attack"
 
-            # occupied = set(positions[i] for i in range(len(positions)) if i != index)
-            # if new_pos in occupied:
-            #     next_to_char = False
-            #     reachable = [
-            #         p for p in range(pos - self._speed, pos + self._speed + 1)
-            #         if p != char_pos and p not in occupied
-            #     ]
-            #     if reachable:
-            #         new_pos = min(reachable, key=lambda p: (abs(p - char_pos), p * direction))
-            #         if abs(new_pos - char_pos) == 1:
-            #             next_to_char = True
-            #     else:
-            #         new_pos = pos
+        return new_pos, attack_type
 
-        return new_pos, next_to_char
-    
+    def move_towards(self, positions: dict, char_abr: str) -> int:
+        char_pos = positions[char_abr]
+        self_pos = positions[self._abr]
+        distance = self._speed
+
+        occupied = set(positions.values())
+        occupied.discard(self_pos)
+
+        reachable_positions = {}
+        for cur_pos in range(self_pos - distance, self_pos + distance + 1):
+            if cur_pos not in occupied:
+                reachable_positions[(abs(cur_pos - char_pos), abs(cur_pos - self_pos))] = cur_pos
+
+        distances = reachable_positions.keys()
+        return reachable_positions[min(distances)]
+
     def move_away():
         return # TODO: enemies specializing in ranged attacks move away from the character
     

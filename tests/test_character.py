@@ -1,7 +1,6 @@
 from model.character import Character
 
 class TestCharacter:
-
     def create_character(self):
         return Character(
             "Mivari",

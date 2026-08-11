@@ -1,18 +1,33 @@
 from model.character import Character
-from model.goblin import Goblin
+from model.creature import Creature
+from model.enemy import Enemy
+from model.scenario import Scenario
 import random
 
 class BattleEngine():
-    def battle(positions: list, enemies: list, character: Character):
-        return # TODO
+    def battle(scenario: Scenario):
+        while True:
+            scenario._char.perform_turn()
+            abr = scenario._char._abr
+            for enemy in scenario._enemies:
+                enemy.perform_turn(scenario._positions, abr)
+        
+    def attack(scenario: Scenario, creature: Creature, attack_type: str, opp_dex: int):
+        acc = None
+        dmg = None
+        if attack_type == "melee_attack":
+            acc = creature._melee_acc
+            dmg = creature._melee_dmg
+        elif attack_type == "ranged_attack":
+            acc = creature._ranged_acc
+            dmg = creature._ranged_dmg
 
-    def attack(acc: int, dmg: int, opp_dex: int):
         if random.randint(0,9) + acc - opp_dex > 0: # hit
-            return dmg
-        return 0 # miss
+            scenario.damage(creature, dmg)
 
-    def heal(max_hp, cur_hp, heal):
-        hp = heal + cur_hp
+    def heal(scenario: Scenario, creature: Creature, heal: int):
+        max_hp = creature._max_hp
+        hp = heal + creature._cur_hp
         if hp >= max_hp:
-            return max_hp
-        return hp
+            hp = max_hp
+        scenario.set_cur_hp(hp)

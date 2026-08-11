@@ -14,16 +14,4 @@ class Goblin(Enemy):
             ranged_damage=1
         )
 
-    def turn(self, positions: list, gob_in: int):
-        pos = positions[gob_in]
-        enemy_pos = positions[0]
-
-        attack_type = "none"
-        new_pos, melee_attack = self.move_towards(positions, gob_in)
-        if melee_attack:
-            attack_type = "melee_attack"
-        elif abs(pos - enemy_pos) <= 20:
-            attack_type = "ranged_attack"
-
-        return new_pos, attack_type
         

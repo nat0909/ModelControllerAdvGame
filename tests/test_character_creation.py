@@ -1,7 +1,6 @@
 from controller.character_creation import CharacterCreation
 
 class TestCharacterCreation():
-    
     def test_determine_stats(self):
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats("warrior")
         assert max_hp == 30

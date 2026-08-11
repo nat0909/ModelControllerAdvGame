@@ -1,7 +1,6 @@
 from model.goblin import Goblin
 
 class TestGoblin:
-
     def create_goblin(self):
         return Goblin(1)        
 

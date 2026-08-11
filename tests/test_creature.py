@@ -1,7 +1,6 @@
 from model.creature import Creature
 
 class TestCreature:
-
     def create_creature(self):
         return Creature(
             "Goblin",

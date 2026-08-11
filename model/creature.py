@@ -2,7 +2,8 @@ class Creature:
     def __init__(self, name: str, abreviation: str, max_hit_points: int, dexterity: int, speed: int, melee_accuracy: int, melee_damage: int, ranged_accuracy: int, ranged_damage: int):
         self._name = name
         self._abr = abreviation
-        self._hp = max_hit_points
+        self._max_hp = max_hit_points
+        self._cur_hp = max_hit_points
         self._dex = dexterity
         self._speed = speed
         self._melee_acc = melee_accuracy
@@ -11,8 +12,11 @@ class Creature:
         self._ranged_dmg = ranged_damage
 
     # Setters
+    def cur_hp(self, hp):
+        self._cur_hp = hp
+
     def max_hp(self, hp):
-        self._hp = hp
+        self._max_hp = hp
 
     def melee_acc(self, acc):
         self._melee_acc = acc

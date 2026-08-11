@@ -15,5 +15,8 @@ class Character(Creature):
         )
         self._char_class = character_class
 
+    def perform_turn(self): # TODO
+        return
+
     def set_class(self, char_class):
         self._char_class = char_class

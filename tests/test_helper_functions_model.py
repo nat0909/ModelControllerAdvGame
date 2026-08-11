@@ -1,7 +1,6 @@
 from model.helper_functions import HelperFunctions
 
 class TestHelperFunctions():
-
     def test_interpret_input(self):
         input_options = ["apple", "banana", "apricot"]
         assert HelperFunctions.interpret_input("banana", input_options) == "banana"
@@ -10,7 +9,7 @@ class TestHelperFunctions():
         assert HelperFunctions.interpret_input("a", input_options) == "Unclear input"
         assert HelperFunctions.interpret_input("c", input_options) == "Invalid input"
 
-    def test_closest_excluding(self):
+    def test_closest_excluding(self): # TODO: remove
         assert HelperFunctions.closest_excluding(10, [10], 5, 10) == 9
         assert HelperFunctions.closest_excluding(10, [10], 15, 10) == 11
         assert HelperFunctions.closest_excluding(10, [], 5, 10) == 10

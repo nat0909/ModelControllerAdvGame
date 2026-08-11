@@ -1,9 +1,7 @@
 from model.enemy import Enemy
 
 class TestEnemy():
-    """Test suite for the class Enemy"""
-
-    def create_enemy():
+    def create_enemy(self):
         return Enemy(
             "Goblin",
             "G1",
@@ -17,7 +15,6 @@ class TestEnemy():
         )
     
     def test_enemy_constructor(self):
-        """Test that Enemy is initialized with correct attributes"""
         sample_enemy = self.create_enemy()
         assert sample_enemy._name == "Goblin"
         assert sample_enemy._abr == "G1"
@@ -29,7 +26,11 @@ class TestEnemy():
         assert sample_enemy._ranged_acc == 2
         assert sample_enemy._ranged_dmg == 2
 
-    def test_move_towards(self,):
-        positions = []
-
-        Enemy.move_towards(positions, index)
+    def test_move_towards(self):
+        sample_enemy = self.create_enemy()
+        assert sample_enemy.move_towards({"FU": 0, "G1": 2}, "FU") == 1
+        assert sample_enemy.move_towards({"FU": 0, "G1": 1}, "FU") == 1
+        assert sample_enemy.move_towards({"FU": 0, "G1": -2}, "FU") == -1
+        assert sample_enemy.move_towards({"FU": 0, "G1": 2, "G2": 1}, "FU") == -1
+        assert sample_enemy.move_towards({"FU": 0, "G1": 10}, "FU") == 7
+        assert sample_enemy.move_towards({"FU": 0, "G1": 3, "G2": 2, "G3": 1}, "FU") == 3
