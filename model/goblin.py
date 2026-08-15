@@ -4,7 +4,7 @@ class Goblin(Enemy):
     def __init__(self, num: int):
         super().__init__(
             name=f"Goblin {num}",
-            abreviation=f"G{num}",
+            abbreviation=f"G{num}",
             max_hit_points=10,
             dexterity=8,
             speed=5,

@@ -3,10 +3,11 @@ from model.creature import Creature
 from model.enemy import Enemy 
 
 class Scenario:
-    def __init__(self, character: Character, enemies: list, starting_positions: dict):
+    def __init__(self, character: Character, enemies: list, starting_positions: dict, num_of_positions: int):
         self._char = character
         self._enemies = enemies
         self._positions = starting_positions
+        self._spaces = num_of_positions
 
     def damage(self, creature: Creature, dmg: int):
         hp = creature._cur_hp - dmg

@@ -14,12 +14,12 @@ class Enemy(Creature):
             ranged_damage
         )
 
-    def perform_turn(self, positions: dict, char_abr: str) -> tuple[int, str]:
+    def perform_turn(self, positions: dict, char_abr: str, spaces: int) -> tuple[int, str]:
         pos = positions[self._abr]
         enemy_pos = positions[char_abr]
 
         attack_type = "none"
-        new_pos = self.move_towards(positions, char_abr)
+        new_pos = self.move_towards(positions, char_abr, spaces)
         if new_pos == enemy_pos + 1 or new_pos == enemy_pos - 1:
             attack_type = "melee_attack"
         elif abs(pos - enemy_pos) <= 20:
@@ -27,7 +27,7 @@ class Enemy(Creature):
 
         return new_pos, attack_type
 
-    def move_towards(self, positions: dict, char_abr: str) -> int:
+    def move_towards(self, positions: dict, char_abr: str, spaces: int) -> int:
         char_pos = positions[char_abr]
         self_pos = positions[self._abr]
         distance = self._speed
@@ -35,8 +35,15 @@ class Enemy(Creature):
         occupied = set(positions.values())
         occupied.discard(self_pos)
 
+        min_pos = self_pos - distance
+        if min_pos < 1:
+            min_pos = 1
+        max_pos = self_pos + distance + 1
+        if max_pos > spaces:
+            max_pos = spaces
+
         reachable_positions = {}
-        for cur_pos in range(self_pos - distance, self_pos + distance + 1):
+        for cur_pos in range(min_pos, max_pos):
             if cur_pos not in occupied:
                 reachable_positions[(abs(cur_pos - char_pos), abs(cur_pos - self_pos))] = cur_pos
 

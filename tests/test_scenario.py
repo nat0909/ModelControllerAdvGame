@@ -34,7 +34,7 @@ class TestScenario:
         enemies = enemies if enemies is not None else [self.create_enemy()]
         if positions is None:
             positions = {"MI": 0, "G1": 3}
-        scenario = Scenario(character, enemies, positions)
+        scenario = Scenario(character, enemies, positions, 100)
         return scenario, character, enemies
 
     def test_constructor(self):

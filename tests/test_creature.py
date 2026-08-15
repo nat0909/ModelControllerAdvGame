@@ -18,18 +18,24 @@ class TestCreature:
         sample_creature = self.create_creature()
         assert sample_creature._name == "Goblin"
         assert sample_creature._abr == "G1"
-        assert sample_creature._hp == 10
+        assert sample_creature._max_hp == 10
+        assert sample_creature._cur_hp == 10
         assert sample_creature._dex == 5
         assert sample_creature._speed == 3
         assert sample_creature._melee_acc == 4
         assert sample_creature._melee_dmg == 2
         assert sample_creature._ranged_acc == 2
         assert sample_creature._ranged_dmg == 2
+
+    def test_set_max_hp(self):
+        sample_creature = self.create_creature()
+        sample_creature.cur_hp(5)
+        assert sample_creature._cur_hp == 5
     
     def test_set_max_hp(self):
         sample_creature = self.create_creature()
         sample_creature.max_hp(15)
-        assert sample_creature._hp == 15
+        assert sample_creature._max_hp == 15
     
     def test_set_melee_accuracy(self):
         sample_creature = self.create_creature()

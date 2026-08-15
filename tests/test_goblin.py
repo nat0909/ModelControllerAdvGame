@@ -8,7 +8,8 @@ class TestGoblin:
         sample_goblin = self.create_goblin()
         assert sample_goblin._name == "Goblin 1"
         assert sample_goblin._abr == "G1"
-        assert sample_goblin._hp == 10
+        assert sample_goblin._max_hp == 10
+        assert sample_goblin._cur_hp == 10
         assert sample_goblin._dex == 8
         assert sample_goblin._speed == 5
         assert sample_goblin._melee_acc == 4

@@ -18,7 +18,8 @@ class TestCharacter:
         assert sample_character._name == "Mivari"
         assert sample_character._abr == "MI"
         assert sample_character._char_class == "rogue"
-        assert sample_character._hp == 20
+        assert sample_character._max_hp == 20
+        assert sample_character._cur_hp == 20
         assert sample_character._dex == 6
         assert sample_character._speed == 8
         assert sample_character._melee_acc == 4

@@ -1,16 +1,12 @@
-from model.character import Character
 from model.creature import Creature
-from model.enemy import Enemy
 from model.scenario import Scenario
 import random
 
 class BattleEngine():
-    def battle(scenario: Scenario):
-        while True:
-            scenario._char.perform_turn()
-            abr = scenario._char._abr
-            for enemy in scenario._enemies:
-                enemy.perform_turn(scenario._positions, abr)
+    def enemy_turns(scenario: Scenario):
+        abr = scenario._char._abr
+        for enemy in scenario._enemies:
+            enemy.perform_turn(scenario._positions, abr)
         
     def attack(scenario: Scenario, creature: Creature, attack_type: str, opp_dex: int):
         acc = None
