@@ -39,7 +39,7 @@ class TestScenario:
 
     def test_constructor(self):
         scenario, character, enemies = self.create_scenario()
-        assert scenario._char == character
+        assert scenario._character == character
         assert scenario._enemies == enemies
         assert scenario._positions == {"MI": 0, "G1": 3}
 

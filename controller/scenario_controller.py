@@ -1,25 +1,30 @@
 from model.scenario import Scenario
 from model.battle_engine import BattleEngine
+from model.turn_log import TurnLog
 
 class ScenarioController:
     def start_scenario(scenario: Scenario):
         is_over = False
         while not is_over:
-            ScenarioController.char_turn()
-            BattleEngine.enemy_turns(scenario)
+            ScenarioController.char_turn() # TODO
+            log = BattleEngine.enemy_turns(scenario)
+            for turn in log:
+                print(ScenarioController.display_turn(turn))
             # print state, take player input, etc.
 
-    def char_turn(scenario: Scenario):
+    def char_turn(scenario: Scenario): # TODO
         return
 
     def display_board(scenario: Scenario):
+        occupants = {}
+        for abr, pos in scenario._positions.items():
+            occupants[pos] = abr
+
         board = ""
-        for space in range(scenario._spaces):
-            occupied = False
-            for abr, occupied_space in scenario._positions.items():
-                if occupied_space == space:
-                    board += abr
-                    occupied = True
-            if not occupied:
-                board += "__"
+        for space in range(1, scenario._spaces + 1):
+            board += occupants.get(space, "__")
+            board += " "
         return board
+
+    def display_turn(turn_log: TurnLog):
+        return

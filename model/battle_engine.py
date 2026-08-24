@@ -1,12 +1,20 @@
 from model.creature import Creature
 from model.scenario import Scenario
+from model.turn_log import TurnLog
 import random
 
 class BattleEngine():
-    def enemy_turns(scenario: Scenario):
-        abr = scenario._char._abr
+    def enemy_turn(scenario: Scenario):
+        abr = scenario._character._abr
+        positions = scenario._positions
+        battle_log = []
+
         for enemy in scenario._enemies:
-            enemy.perform_turn(scenario._positions, abr)
+            old_pos = positions[enemy._abr]
+            new_pos, attack = enemy.perform_turn(positions, abr)
+            # implement attack logic and add to turn log
+            battle_log += TurnLog(old_pos, new_pos)
+        return battle_log
         
     def attack(scenario: Scenario, creature: Creature, attack_type: str, opp_dex: int):
         acc = None
