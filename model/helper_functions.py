@@ -2,6 +2,7 @@ import copy
 
 class HelperFunctions():
     # NOTE: currently not being used
+    @staticmethod
     def interpret_input(input, options: list):
         """Find the option that best matches the input.
         

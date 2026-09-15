@@ -1,21 +1,8 @@
-from model.enemy import Enemy
+from tests.sample_objects import SampleObjects
 
-class TestEnemy():
-    def create_enemy(self):
-        return Enemy(
-            "Goblin",
-            "G1",
-            10,
-            5,
-            3,
-            4,
-            2,
-            2,
-            2,
-        )
-    
+class TestEnemy():    
     def test_enemy_constructor(self):
-        sample_enemy = self.create_enemy()
+        sample_enemy = SampleObjects.create_enemy()
         assert sample_enemy._name == "Goblin"
         assert sample_enemy._abr == "G1"
         assert sample_enemy._max_hp == 10
@@ -28,7 +15,7 @@ class TestEnemy():
         assert sample_enemy._ranged_dmg == 2
 
     def test_move_towards(self):
-        sample_enemy = self.create_enemy()
+        sample_enemy = SampleObjects.create_enemy()
         assert sample_enemy.move_towards({"FU": 5, "G1": 7}, "FU", 10) == 6 # Test basic movement
         assert sample_enemy.move_towards({"FU": 5, "G1": 6}, "FU", 10) == 6 # Test can stay in same position
         assert sample_enemy.move_towards({"FU": 5, "G1": 7, "G2": 6,}, "FU", 10) == 4 # Test movement around target

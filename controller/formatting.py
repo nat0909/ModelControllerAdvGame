@@ -1,4 +1,5 @@
 class Formatting():
+    @staticmethod
     def section_title(section):
         print()
         print("=" * 100)

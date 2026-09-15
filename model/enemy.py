@@ -50,6 +50,6 @@ class Enemy(Creature):
         distances = reachable_positions.keys()
         return reachable_positions[min(distances)]
 
-    def move_away():
+    def move_away(self):
         return # TODO: enemies specializing in ranged attacks move away from the character
     

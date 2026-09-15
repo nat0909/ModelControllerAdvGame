@@ -2,6 +2,7 @@ from controller.formatting import Formatting
 import time
 
 class CharacterCreation():
+    @staticmethod
     def create_character(user_input=input):
         Formatting.section_title("Character Creation")
         name = CharacterCreation.choose_name()
@@ -9,18 +10,21 @@ class CharacterCreation():
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats(char_class)
 
         print("\nCreating character...")
-        time.sleep(2)
+        time.sleep(1)
 
         Formatting.section_title(name)
+        time.sleep(0.1)
         print("Class:", char_class.title())
         print("\nMax Hit Points:", max_hp)
         print("Dexterity:", dex)
         print("Speed:", speed)
+        time.sleep(0.1)
         print("\nMelee Accuracy:", melee_acc)
         print("Melee Damage:", melee_dmg)
         print("Ranged Accuracy:", ranged_acc)
         print("Ranged Damage:", ranged_dmg)
 
+    @staticmethod
     def determine_stats(c):
         # Base stats
         max_hp = 20
@@ -48,6 +52,7 @@ class CharacterCreation():
 
         return max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg
 
+    @staticmethod
     def choose_name(user_input=input):
         print("Pick a name for your character.")
         while True:
@@ -57,9 +62,10 @@ class CharacterCreation():
             else:
                 print("\nThe name may not have any numbers, spaces, or special characters.")
                 print("Please choose another name.")
-    
+
+    @staticmethod
     def choose_class(user_input=input):        
-        print("\nWrite the number of the class you want.")
+        print("\nType the number of the class you want.")
         print("1. Warrior")
         print("2. Ranger")
         print("3. Rogue")

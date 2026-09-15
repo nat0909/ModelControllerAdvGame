@@ -1,20 +1,8 @@
-from model.character import Character
+from tests.sample_objects import SampleObjects
 
 class TestCharacter:
-    def create_character(self):
-        return Character(
-            "Mivari",
-            "rogue",
-            20,
-            6,
-            8,
-            4,
-            3,
-            10,
-            5)        
-
     def test_character_constructor(self):
-        sample_character = self.create_character()
+        sample_character = SampleObjects.create_character()
         assert sample_character._name == "Mivari"
         assert sample_character._abr == "MI"
         assert sample_character._char_class == "rogue"
@@ -28,6 +16,6 @@ class TestCharacter:
         assert sample_character._ranged_dmg == 5
 
     def test_set_class(self):
-        sample_character = self.create_character()
+        sample_character = SampleObjects.create_character()
         sample_character.set_class("warrior")
         assert sample_character._char_class == "warrior"
