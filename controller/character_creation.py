@@ -1,15 +1,17 @@
 from controller.formatting import Formatting
+from model.character import Character
 import time
 
 class CharacterCreation():
     @staticmethod
     def create_character(user_input=input):
         Formatting.section_title("Character Creation")
-        name = CharacterCreation.choose_name()
-        char_class = CharacterCreation.choose_class()
+        name = CharacterCreation.choose_name(user_input)
+        char_class = CharacterCreation.choose_class(user_input)
         max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg = CharacterCreation.determine_stats(char_class)
 
         print("\nCreating character...")
+        character = Character(name, char_class, max_hp, dex, speed, melee_acc, melee_dmg, ranged_acc, ranged_dmg)
         time.sleep(1)
 
         Formatting.section_title(name)
@@ -23,6 +25,8 @@ class CharacterCreation():
         print("Melee Damage:", melee_dmg)
         print("Ranged Accuracy:", ranged_acc)
         print("Ranged Damage:", ranged_dmg)
+
+        return character
 
     @staticmethod
     def determine_stats(c):
@@ -61,7 +65,7 @@ class CharacterCreation():
                 return name.title()
             else:
                 print("\nThe name may not have any numbers, spaces, or special characters.")
-                print("Please choose another name.")
+                print("Choose another name.")
 
     @staticmethod
     def choose_class(user_input=input):        
@@ -79,7 +83,7 @@ class CharacterCreation():
             elif class_num == "3":
                 return "rogue"
             else:
-                print("\nInvalid input. Please type the number cooresponding with the class.")
+                print("\nInvalid input. Type the number cooresponding with the class.")
 
 
 
