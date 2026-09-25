@@ -9,38 +9,35 @@ class ScenarioController:
     @staticmethod
     def run_scenario(scenario: Scenario):
         is_over = False
+        print(ScenarioController.scenario_start(scenario))
+        time.sleep(2)
         while not is_over:
-            Formatting.section_title("Your Turn")
+            print(Formatting.section_sub_title("Your Turn"))
             log = CharacterTurn.prompt_player(scenario)
-            print(ScenarioController.display_board(scenario))
+            print(Formatting.display_board(scenario))
             time.sleep(2)
 
-            Formatting.section_title("Enemy Turns")
+            print(Formatting.section_sub_title("Enemy Turns"))
             log = BattleEngine.enemy_turn(scenario)
             for turn in log:
                 print(ScenarioController.display_turn(turn))
-                print(ScenarioController.display_board(scenario))
+                print(Formatting.display_board(scenario))
                 time.sleep(2)
 
     @staticmethod
-    def display_board(scenario: Scenario):
-        occupants = {}
-        for abr, pos in scenario._positions.items():
-            occupants[pos] = abr
-
-        board = ""
-        for space in range(1, scenario._spaces + 1):
-            board += occupants.get(space, "__")
-            board += " "
-        return board
-
+    def scenario_start(scenario: Scenario) -> str:
+        text = Formatting.section_title("SCENARIO START")
+        text += "Board:\n"
+        text += Formatting.display_board(scenario)
+        return text     
+    
     @staticmethod
-    def display_turn(turn_log: TurnLog):
+    def display_turn(turn_log: TurnLog) -> str:
         name = turn_log._name
         old_pos = turn_log._old_position
         new_pos = turn_log._new_position
 
-        print_log = f"\n{name}'s turn: \n"
+        print_log = f"{name}'s turn: \n"
         if old_pos != new_pos:
             print_log += f"{name} moved to {new_pos}."
 
